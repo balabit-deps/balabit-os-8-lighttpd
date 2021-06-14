@@ -1,0 +1,19 @@
+#!/bin/sh
+# This test checks for regressions on lighttpd fam dependencies,
+# which could either be satisfied by libgamin or libfam, whereas the latter
+# does not provide all the needed symbols for the package to work properly
+# https://bugs.launchpad.net/ubuntu/+source/lighttpd/+bug/1453463
+
+test_dep_regression() {
+  apt-get purge -y libfam0 libgamin0 lighttpd
+  apt-get install -y $1
+  apt-get install -y lighttpd
+  if ! /usr/sbin/lighttpd -v; then
+    echo "Err: possible libfam-libgamin conflict regression"
+    exit 1
+  fi
+}
+
+apt-get update
+test_dep_regression libfam0
+test_dep_regression libgamin0
