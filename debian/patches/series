@@ -1,3 +1,4 @@
 var-run-929203.patch
 build-dev-package.patch
 add-lighttpd.pc-configure.patch
+CVE-2022-22707.patch

@@ -1,3 +1,13 @@
+lighttpd (1.4.55-1ubuntu1.20.04.2) focal-security; urgency=medium
+
+  * SECURITY UPDATE: Out-of-bounds Write
+    - debian/patches/CVE-2022-22707.patch: mod_extforward_Forwarded function
+      of the mod_extforward plugin has a stack-based buffer overflow.
+      (LP: #1994989)
+    - CVE-2022-22707
+
+ -- Jack Fewx <jack@fewx.com>  Thu, 16 Feb 2023 20:09:14 -0600
+
 lighttpd (1.4.55-1ubuntu1.20.04.1) focal; urgency=medium
 
   * d/control: Depend on libgamin to fix missing symbol errors (LP: #1453463)
